@@ -8,7 +8,7 @@ import {  useNavigate } from 'react-router-dom';
 export function Editortiny() {
   const editorRef = useRef(null);
   const [title, stitle] = useState("")
-
+  const apiKey = import.meta.env.VITE_API_TEXT
   let ctemp = "";
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ async function sendRequest(){
     </div>
     <div className='p-6'>
       <Editor 
-      apiKey='vck23c0tdiufemkei0qwe8zxdjzemhyq6e090l52c243qtlj'
+      apiKey={apiKey}
       //@ts-ignore
       onInit={(evt, editor) => editorRef.current = editor}
         initialValue="<p>This is the initial content of the editor.</p>"
