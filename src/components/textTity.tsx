@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
-import { CreatePostInput } from '@k7n/common';
 import { BACKEND_URL } from '../config';
 import axios from 'axios';
 import {  useNavigate } from 'react-router-dom';

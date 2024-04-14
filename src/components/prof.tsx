@@ -1,5 +1,4 @@
 import { getArticles } from "../hooks"
-import { HeaderS } from "./headerSign"
 
 export const Prof = () =>{
     const c = getArticles()

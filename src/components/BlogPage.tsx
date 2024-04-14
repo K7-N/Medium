@@ -1,4 +1,3 @@
-import { render } from "react-dom"
 import { Blog } from "../hooks"
 import { AppBar } from "./AppBar"
 import { Avatar } from "./BlogCard"

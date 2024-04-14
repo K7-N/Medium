@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export const AppBar = () => {
     return <div className="py-2 border-b flex justify-between px-100 ">
