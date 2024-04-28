@@ -2,7 +2,6 @@ import { Blog } from "../hooks"
 import { AppBar } from "./AppBar"
 import { Avatar } from "./BlogCard"
 import parse from 'html-react-parser'
-// import parse from 'html-react-parser'
 
 export const BlogPage = ({blog} : {blog: Blog}) =>{
     const RederedC = parse(blog.content)
@@ -14,7 +13,7 @@ export const BlogPage = ({blog} : {blog: Blog}) =>{
                 {blog.title}
             </div>
             <div className="text-slate-500 pt-2">
-                Posted on 2nd Dec 2032
+                Posted on: {blog.createdAt.slice(0,10)}
             </div>
             <div className="pt-4">
                 {RederedC}
@@ -33,7 +32,7 @@ export const BlogPage = ({blog} : {blog: Blog}) =>{
                     {blog.author.name || "Anonymous"}
                 </div>
                 <div className="text-slate-500">
-                    Tagline of the Author here 
+                    {blog.author.tagline == null ? "Budding Author" : blog.author.tagline}
                 </div>
             </div>
             </div>

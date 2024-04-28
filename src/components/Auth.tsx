@@ -25,7 +25,6 @@ function getInType(t: string){
 }
 const checkLoggedin = async () => {
     const token = localStorage.getItem("token")
-    console.log(token)
     const navigate = useNavigate()
     if(token !== null){
         try{
@@ -42,14 +41,12 @@ const checkLoggedin = async () => {
 
 export const Auth = ({type}: {type: "signup" | "signin"})=>{
     const [postInputs, setPostInputs] = getInType(type)
+    const [credError, scredError] = useState(false)
     const navigate = useNavigate()
     checkLoggedin()
     async function sendRequest(){
         try{
-            console.log(`${BACKEND_URL}/api/v1/user/${type}`)
-            console.log(postInputs)
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type}`, postInputs)
-            console.log(response)
             const jwt = response.data.wt
             localStorage.setItem("token", jwt)
             const r1 = await axios.get(`${BACKEND_URL}/api/v1/blog/AuxData`,{
@@ -57,20 +54,25 @@ export const Auth = ({type}: {type: "signup" | "signin"})=>{
                     Authorization: localStorage.getItem("token")
                 }
             })
-            console.log(r1)
             localStorage.setItem("Username", r1.data.name)
             localStorage.setItem("tagline", r1.data.tagline == null ? "Budding Author":r1.data.tagline)
             navigate("/blogs")
         } catch(e){
-    
+            scredError(true)
         }
     }
     return<div className="h-screen flex justify-center flex-col">
+
         <div className="flex justify-center">
             <div>
             <HeaderS type={type}></HeaderS>
+            {credError ? 
+            <div className="border mx-1 border-red-400 rounded bg-red-100 px-4 py-3 text-red-700">
+                <p>Something went wrong, Check your Credentials</p>
+            </div> : null
+            }
             {type === 'signup' ? (
-            <LabelledInput label="Name" placeholder="KS" onChange={(e) =>{
+            <LabelledInput label="Name" placeholder="Julies" onChange={(e) =>{
                 setPostInputs({
                     ...postInputs,
                     name: e.target.value
@@ -82,7 +84,7 @@ export const Auth = ({type}: {type: "signup" | "signin"})=>{
                     email: e.target.value
                 })
             }}/>
-            <LabelledInput label="Password" type={"password"} placeholder="pw" onChange={(e) =>{
+            <LabelledInput label="Password" type={"password"} placeholder="Strong Password" onChange={(e) =>{
                 setPostInputs({
                     ...postInputs,
                     password: e.target.value

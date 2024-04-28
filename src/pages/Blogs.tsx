@@ -25,7 +25,7 @@ export const Blogs = () =>{
     <div className="max-w-xl ">
         {blogs.map(blog =><Blogcard authorName={blog.author.name || "Anon"}  
         title={blog.title} 
-        publishedDate="03/13/22" 
+        publishedDate={blog.createdAt.slice(0,10)} 
         content={blog.content}
         id={blog.id}>
         </Blogcard>).reverse()}

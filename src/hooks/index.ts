@@ -7,8 +7,10 @@ export interface Blog{
     "content": string
     "title": string
     "id": string
+    "createdAt": string
     "author": {
         "name": string
+        "tagline": string 
       }
 }
 
@@ -22,7 +24,6 @@ export const useBlog = ({id} : {id: string}) =>{
             }
         })
             .then(response =>{
-                console.log(response.data)
                 setblog(response.data)
                 setloading(false)
             })
@@ -70,4 +71,13 @@ export const getArticles = () =>{
         ans
     }
 
+}
+export const UpdTagline = (tagline: string) =>{
+    const [tl, settl] = useState(0);
+    useEffect(() => {
+        
+    }, [])
+    return{
+        tl
+    }
 }
