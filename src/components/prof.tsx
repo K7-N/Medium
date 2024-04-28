@@ -1,5 +1,5 @@
 import axios from "axios"
-import { UpdTagline, getArticles } from "../hooks"
+import {getArticles } from "../hooks"
 import { useState } from "react"
 import { BACKEND_URL } from "../config"
 
@@ -7,7 +7,6 @@ import { BACKEND_URL } from "../config"
 export const Prof = () =>{
     const [tagl, stagl] = useState("")
     
-    let justUped = false;
     const [tluped, stlup] = useState(false)
     const tlupd = async () =>{
         axios.post(`${BACKEND_URL}/api/v1/blog/Updatetagline`, {tagline:tagl},{

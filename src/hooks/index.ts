@@ -72,12 +72,3 @@ export const getArticles = () =>{
     }
 
 }
-export const UpdTagline = (tagline: string) =>{
-    const [tl, settl] = useState(0);
-    useEffect(() => {
-        
-    }, [])
-    return{
-        tl
-    }
-}
